@@ -1,0 +1,77 @@
+/* Triple 5 Construction — Color tokens
+   Palette: deep slate navy (trust, protection) + warm clay/terracotta
+   (shingles, warmth) over warm stone neutrals. Down-to-earth, sturdy. */
+
+:root {
+  /* --- Navy (primary brand — roofs, trust, structure) --- */
+  --color-navy-900: #0E1D2B;
+  --color-navy-800: #15293C;
+  --color-navy-700: #1E3A54;
+  --color-navy-600: #2A4E6E;
+  --color-navy-500: #3A6488;
+
+  /* --- Steel blue (secondary — sky, cool support) --- */
+  --color-steel-600: #3E6B89;
+  --color-steel-500: #5486A4;
+  --color-steel-300: #9CBACD;
+  --color-steel-100: #E4EDF3;
+
+  /* --- Clay (accent — terracotta shingle warmth) --- */
+  --color-clay-700: #A63C1E;
+  --color-clay-600: #C24B27;
+  --color-clay-500: #D9622F;
+  --color-clay-300: #EDA079;
+  --color-clay-100: #F8E5DA;
+
+  /* --- Stone (warm neutrals) --- */
+  --color-stone-50:  #F8F7F4;
+  --color-stone-100: #EFEDE8;
+  --color-stone-200: #E1DDD5;
+  --color-stone-300: #C9C4B9;
+  --color-stone-400: #A8A296;
+  --color-stone-500: #827C70;
+  --color-stone-600: #5E594F;
+  --color-stone-700: #423E37;
+  --color-stone-900: #201E1A;
+
+  --color-white: #FFFFFF;
+
+  /* --- Semantic status --- */
+  --color-success: #2E7D4F;
+  --color-success-soft: #E1F0E7;
+  --color-warning: #C98A16;
+  --color-warning-soft: #F8ECD3;
+  --color-danger:  #C0392B;
+  --color-danger-soft: #F6E0DD;
+  --color-info:    #3E6B89;
+  --color-info-soft: #E4EDF3;
+
+  /* ===== Semantic aliases ===== */
+  --brand-primary:       var(--color-navy-800);
+  --brand-primary-hover: var(--color-navy-700);
+  --brand-primary-press: var(--color-navy-900);
+  --brand-secondary:     var(--color-steel-600);
+  --brand-accent:        var(--color-clay-600);
+  --brand-accent-hover:  var(--color-clay-500);
+  --brand-accent-press:  var(--color-clay-700);
+
+  --text-strong:  var(--color-navy-900);
+  --text-body:    var(--color-stone-700);
+  --text-muted:   var(--color-stone-500);
+  --text-inverse: var(--color-white);
+  --text-accent:  var(--color-clay-600);
+  --text-link:    var(--color-navy-700);
+  --text-link-hover: var(--color-clay-600);
+
+  --surface-page:   var(--color-stone-50);
+  --surface-card:   var(--color-white);
+  --surface-raised: var(--color-white);
+  --surface-sunken: var(--color-stone-100);
+  --surface-dark:   var(--color-navy-800);
+  --surface-accent-soft: var(--color-clay-100);
+
+  --border-subtle:  var(--color-stone-200);
+  --border-default: var(--color-stone-300);
+  --border-strong:  var(--color-stone-400);
+  --border-focus:   var(--color-steel-500);
+}

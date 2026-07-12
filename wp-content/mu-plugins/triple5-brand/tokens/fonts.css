@@ -1,0 +1,9 @@
+/* Triple 5 Construction — Fonts
+   No custom brand fonts were provided, so these are the nearest Google Fonts:
+   - Barlow Semi Condensed: sturdy industrial-signage feel for headings/display
+   - Public Sans: clean, highly legible workhorse for body + UI
+   - IBM Plex Mono: technical/spec details, measurements, code
+   SUBSTITUTION FLAG: swap these @font-face imports for licensed brand fonts
+   if Triple 5 has them. */
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700;800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap');

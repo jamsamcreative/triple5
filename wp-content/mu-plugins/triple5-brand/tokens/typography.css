@@ -1,0 +1,59 @@
+/* Triple 5 Construction — Typography tokens */
+
+:root {
+  /* Families */
+  --font-display: 'Barlow Semi Condensed', 'Arial Narrow', system-ui, sans-serif;
+  --font-body: 'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  /* Weights */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extrabold: 800;
+
+  /* Type scale (px) — display uses condensed for tighter, bigger presence */
+  --text-2xs: 11px;
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 22px;
+  --text-2xl: 28px;
+  --text-3xl: 36px;
+  --text-4xl: 48px;
+  --text-5xl: 64px;
+  --text-6xl: 84px;
+
+  /* Line heights */
+  --leading-tight: 1.05;
+  --leading-snug: 1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.65;
+
+  /* Letter spacing */
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.02em;
+  --tracking-caps: 0.08em;  /* eyebrow / label all-caps */
+
+  /* ===== Semantic type roles ===== */
+  --type-eyebrow-family: var(--font-display);
+  --type-eyebrow-size: var(--text-sm);
+  --type-eyebrow-weight: var(--weight-bold);
+  --type-eyebrow-tracking: var(--tracking-caps);
+
+  --type-display-family: var(--font-display);
+  --type-display-weight: var(--weight-extrabold);
+  --type-display-leading: var(--leading-tight);
+
+  --type-heading-family: var(--font-display);
+  --type-heading-weight: var(--weight-bold);
+  --type-heading-leading: var(--leading-snug);
+
+  --type-body-family: var(--font-body);
+  --type-body-size: var(--text-base);
+  --type-body-weight: var(--weight-regular);
+  --type-body-leading: var(--leading-relaxed);
+}

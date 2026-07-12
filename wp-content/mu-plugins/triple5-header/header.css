@@ -1,0 +1,191 @@
+/* Triple 5 Construction — site header
+   Clay top bar + navy nav + clay CTA, matched to the approved screenshot.
+   Uses design-system tokens loaded by the triple5-brand mu-plugin. */
+
+.t5-header {
+	position: relative;
+	z-index: 100;
+	font-family: var(--font-display, system-ui, sans-serif);
+}
+
+.t5-header * {
+	box-sizing: border-box;
+}
+
+.t5-container {
+	max-width: 1320px;
+	margin: 0 auto;
+	padding-left: var(--space-6, 24px);
+	padding-right: var(--space-6, 24px);
+}
+
+/* ---------- Top bar (clay) ---------- */
+.t5-topbar {
+	background: var(--brand-accent, #C24B27);
+	color: var(--color-white, #fff);
+}
+
+.t5-topbar__inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-4, 16px);
+	min-height: 46px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	flex-wrap: wrap;
+}
+
+.t5-topbar__left {
+	display: flex;
+	align-items: center;
+	gap: var(--space-8, 32px);
+	flex-wrap: wrap;
+}
+
+.t5-topbar__item {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	color: var(--color-white, #fff);
+	text-decoration: none;
+	font-weight: var(--weight-bold, 700);
+	font-size: 13px;
+	letter-spacing: var(--tracking-caps, 0.08em);
+	line-height: 1;
+	white-space: nowrap;
+}
+
+.t5-topbar__item svg {
+	opacity: 0.9;
+	flex: none;
+}
+
+.t5-topbar__item:hover {
+	color: var(--color-clay-100, #F8E5DA);
+}
+
+/* ---------- Nav row (navy) ---------- */
+.t5-nav {
+	background: var(--brand-primary, #15293C);
+	border-bottom: 3px solid var(--brand-accent, #C24B27);
+}
+
+.t5-nav__inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-6, 24px);
+	min-height: 84px;
+}
+
+.t5-nav__logo {
+	flex: none;
+	display: inline-flex;
+	align-items: center;
+}
+
+.t5-nav__logo img {
+	height: 52px;
+	width: auto;
+	display: block;
+}
+
+.t5-nav__menu {
+	display: flex;
+	align-items: center;
+	gap: var(--space-8, 32px);
+	flex: 1 1 auto;
+	justify-content: center;
+}
+
+.t5-nav__link {
+	color: var(--color-white, #fff);
+	text-decoration: none;
+	font-weight: var(--weight-bold, 700);
+	font-size: 15px;
+	letter-spacing: var(--tracking-caps, 0.07em);
+	line-height: 1;
+	transition: color var(--duration-fast, 120ms) var(--ease-standard, ease);
+	white-space: nowrap;
+}
+
+.t5-nav__link:hover,
+.t5-nav__link.is-active {
+	color: var(--brand-accent, #C24B27);
+}
+
+/* ---------- CTA button ---------- */
+.t5-nav__cta {
+	flex: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 14px;
+	background: var(--brand-accent, #C24B27);
+	color: var(--color-white, #fff);
+	text-decoration: none;
+	font-weight: var(--weight-bold, 700);
+	font-size: 15px;
+	letter-spacing: var(--tracking-caps, 0.07em);
+	text-transform: uppercase;
+	padding: 12px 12px 12px 26px;
+	border-radius: 999px;
+	transition: background var(--duration-fast, 120ms) var(--ease-standard, ease),
+		transform var(--duration-fast, 120ms) var(--ease-standard, ease);
+}
+
+.t5-nav__cta:hover {
+	background: var(--brand-accent-hover, #D9622F);
+}
+
+.t5-nav__cta:active {
+	transform: translateY(1px);
+}
+
+.t5-nav__cta-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 34px;
+	height: 34px;
+	border-radius: 999px;
+	background: var(--color-white, #fff);
+	color: var(--brand-accent, #C24B27);
+	flex: none;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1080px) {
+	.t5-nav__menu {
+		gap: var(--space-5, 20px);
+	}
+	.t5-nav__link {
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 900px) {
+	.t5-nav__inner {
+		flex-wrap: wrap;
+		min-height: 0;
+		padding-top: 14px;
+		padding-bottom: 14px;
+		gap: 14px;
+	}
+	.t5-nav__menu {
+		order: 3;
+		flex-basis: 100%;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+	}
+}
+
+@media (max-width: 560px) {
+	.t5-topbar__inner {
+		justify-content: center;
+		text-align: center;
+	}
+	.t5-nav__cta {
+		padding-left: 20px;
+	}
+}

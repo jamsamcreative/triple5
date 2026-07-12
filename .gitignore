@@ -1,0 +1,32 @@
+# Triple5 tracks CUSTOM CODE ONLY. WordPress core lives in the Local site
+# (~/Local Sites/triple5/app/public) and is intentionally NOT version-controlled here.
+
+# Machine-specific Claude Code settings (context-system hooks, permissions)
+.claude/settings.local.json
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
+
+# Dependencies / build output (uncomment/adjust when you add a build step)
+node_modules/
+vendor/
+# wp-content/themes/triple5/build/
+
+# Never track WordPress core or generated content, even if copied in by mistake
+/wp-admin/
+/wp-includes/
+wp-*.php
+xmlrpc.php
+index.php
+license.txt
+readme.html
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/cache/
+
+# Only default WP themes/plugins — keep them out; track only our custom code
+wp-content/themes/twentytwenty*/

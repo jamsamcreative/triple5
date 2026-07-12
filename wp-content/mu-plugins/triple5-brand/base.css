@@ -1,0 +1,60 @@
+/* Triple 5 Construction — brand base layer
+   Maps design-system tokens onto real page elements so the site inherits the
+   brand out of the box. Intentionally light-touch: sets typography, text/link
+   colors, button shape, and focus ring. Pro/Cornerstone styles set in the
+   builder still win where they set an explicit value. Remove this file (or the
+   whole triple5-brand mu-plugin) to fully revert. */
+
+body,
+.x-root,
+.cs-content {
+  font-family: var(--font-body);
+  color: var(--text-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6,
+.x-heading, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--font-display);
+  color: var(--text-strong);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+}
+
+h1, .h1 { font-weight: var(--weight-extrabold); line-height: var(--leading-tight); }
+
+a { color: var(--text-link); }
+a:hover { color: var(--text-link-hover); }
+
+/* Eyebrows / small caps labels */
+.eyebrow, .x-eyebrow {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-caps);
+  color: var(--text-accent);
+}
+
+/* Phone numbers / measurements / spec detail */
+.mono, .spec, .phone { font-family: var(--font-mono); }
+
+/* Buttons — squared, sturdy, uppercase display type */
+.x-btn, .x-anchor-button, button.wp-block-button__link, .wp-block-button__link {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  border-radius: var(--radius-md);
+}
+
+/* Focus ring — steel blue, matches design system */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+::selection { background: var(--color-clay-100); color: var(--text-strong); }
