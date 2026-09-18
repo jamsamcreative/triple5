@@ -1,0 +1,183 @@
+/**
+ * Triple 5 Testimonials styles. Built on the brand tokens loaded by triple5-brand
+ * (--brand-*, --color-*, --font-*, --radius-*, --shadow-*).
+ *
+ * Light section: centered uppercase heading → grid of white review cards
+ * (initial avatar, name/location, source badge, amber stars, quote).
+ */
+
+.t5-reviews {
+	background: var(--surface-page, #F8F7F4);
+	color: var(--text-body, #423E37);
+}
+
+.t5-reviews__inner {
+	max-width: 1240px;
+	margin: 0 auto;
+	padding: 80px 32px 96px;
+}
+
+.t5-reviews__heading {
+	margin: 0 0 52px;
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: clamp(34px, 4vw, 56px);
+	line-height: 1;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 0.01em;
+	color: var(--text-strong, #1F1D19);
+}
+
+.t5-reviews__empty {
+	margin: 0;
+	text-align: center;
+	color: var(--text-muted, #827C70);
+}
+
+/* Grid ---------------------------------------------------------------------- */
+.t5-reviews__grid {
+	display: grid;
+	gap: 24px;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.t5-reviews__grid.has-cols-3 {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.t5-reviews__grid.has-cols-2 {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+/* Card ---------------------------------------------------------------------- */
+.t5-reviews__card {
+	display: flex;
+	flex-direction: column;
+	padding: 28px 28px 32px;
+	background: var(--surface-card, #fff);
+	border: 1px solid var(--color-stone-200, #E1DDD5);
+	border-radius: var(--radius-lg, 10px);
+	box-shadow: var(--shadow-sm);
+	color: inherit;
+	text-decoration: none;
+	transition: transform var(--duration-base, 200ms) var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), box-shadow var(--duration-base, 200ms) ease;
+}
+
+.t5-reviews__card.is-link:hover {
+	transform: translateY(-3px);
+	box-shadow: var(--shadow-md);
+	color: inherit;
+}
+
+.t5-reviews__head {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	margin-bottom: 18px;
+}
+
+/* Avatar — soft red disc with the reviewer's initial; keeps the brand accent
+   present without a photo (Google/Yelp photo hot-linking is unreliable). */
+.t5-reviews__avatar {
+	flex: 0 0 auto;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+	background: var(--color-red-100, #F5E1DF);
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: 22px;
+	color: var(--brand-accent, #8E231E);
+}
+
+.t5-reviews__who {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	flex: 1 1 auto;
+}
+
+.t5-reviews__name {
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 19px;
+	line-height: 1.1;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: var(--text-strong, #1F1D19);
+}
+
+.t5-reviews__loc {
+	margin-top: 4px;
+	font-family: var(--font-body);
+	font-size: 15px;
+	color: var(--text-muted, #827C70);
+}
+
+/* Source badge — small outlined disc at the right of the header. */
+.t5-reviews__badge {
+	flex: 0 0 auto;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	border: 1px solid var(--color-stone-200, #E1DDD5);
+	border-radius: 50%;
+	background: var(--surface-card, #fff);
+	color: var(--text-muted, #827C70);
+}
+
+/* Stars — amber (status-warning token) as on the hero badges. */
+.t5-reviews__stars {
+	display: inline-flex;
+	gap: 2px;
+	margin-bottom: 18px;
+	color: var(--color-stone-200, #E1DDD5);
+}
+
+.t5-reviews__star {
+	display: inline-flex;
+}
+
+.t5-reviews__star.is-on {
+	color: var(--color-warning, #C98A16);
+}
+
+.t5-reviews__text {
+	margin: 0;
+	font-family: var(--font-body);
+	font-size: 17px;
+	line-height: 1.65;
+	color: var(--text-body, #423E37);
+}
+
+/* Responsive ---------------------------------------------------------------- */
+@media (max-width: 1100px) {
+	.t5-reviews__grid,
+	.t5-reviews__grid.has-cols-3 {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 640px) {
+	.t5-reviews__inner {
+		padding: 56px 20px 64px;
+	}
+
+	.t5-reviews__heading {
+		margin-bottom: 36px;
+	}
+
+	.t5-reviews__grid,
+	.t5-reviews__grid.has-cols-3,
+	.t5-reviews__grid.has-cols-2 {
+		grid-template-columns: 1fr;
+	}
+}
