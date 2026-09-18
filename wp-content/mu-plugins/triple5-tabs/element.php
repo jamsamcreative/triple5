@@ -5,7 +5,9 @@
  * A stone page header (eyebrow, display heading, subtext) followed by a tab bar
  * and one panel per service line (up to 6). Each panel: optional red pill badge,
  * heading, body, checklist (one item per line, two columns), pill CTA with a
- * circled arrow, and an image with a blueprint-grid placeholder + caption.
+ * circled arrow, and an image with a blueprint-grid placeholder + caption. With a
+ * single tab the bar is omitted, which makes the element double as a service-page
+ * header + intro (used by the individual service pages).
  *
  * Tabs are plain anchors + panels; tabs.js switches them (ARIA tablist). Without
  * JS every panel simply stacks, so the content is always reachable and the markup
@@ -184,10 +186,13 @@ function triple5_tabs_render( $data ) {
 			. '</div>';
 	}
 
-	return '<section class="t5-tabs" data-t5-tabs>'
+	// A single service (e.g. an individual service page) needs no tab bar.
+	$bar = $n > 1 ? '<nav class="t5-tabs__bar" role="tablist" aria-label="Services">' . $tabs . '</nav>' : '';
+
+	return '<section class="t5-tabs' . ( $n > 1 ? '' : ' is-single' ) . '" data-t5-tabs>'
 		. $header
 		. '<div class="t5-tabs__inner">'
-		. '<nav class="t5-tabs__bar" role="tablist" aria-label="Services">' . $tabs . '</nav>'
+		. $bar
 		. $panels
 		. '</div></section>';
 }
