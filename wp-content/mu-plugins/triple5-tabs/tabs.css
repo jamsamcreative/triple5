@@ -1,0 +1,324 @@
+/**
+ * Triple 5 Service Tabs styles. Built on the brand tokens loaded by triple5-brand
+ * (--brand-*, --color-*, --font-*, --radius-*, --shadow-*).
+ *
+ * Layout: stone page-header band → white body with an underlined tab bar and one
+ * two-column panel (content | media) per service. Panels only hide once tabs.js
+ * adds `.is-enhanced`; without JS they stack so nothing is trapped.
+ */
+
+.t5-tabs {
+	background: var(--surface-card, #fff);
+	color: var(--text-body, #423E37);
+}
+
+/* Page header band ---------------------------------------------------------- */
+.t5-tabs__header {
+	background: var(--surface-page, #F8F7F4);
+	border-bottom: 1px solid var(--color-stone-200, #E1DDD5);
+}
+
+.t5-tabs__header-inner {
+	max-width: 1240px;
+	margin: 0 auto;
+	padding: 64px 32px 88px;
+}
+
+.t5-tabs__eyebrow {
+	margin: 0 0 22px;
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 15px;
+	text-transform: uppercase;
+	letter-spacing: var(--tracking-caps, 0.08em);
+	color: var(--brand-accent, #8E231E);
+}
+
+.t5-tabs__title {
+	margin: 0 0 20px;
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: clamp(38px, 4.8vw, 66px);
+	line-height: 0.98;
+	text-transform: uppercase;
+	letter-spacing: 0.01em;
+	color: var(--text-strong, #1F1D19);
+}
+
+.t5-tabs__sub {
+	margin: 0;
+	max-width: 760px;
+	font-family: var(--font-body);
+	font-size: 20px;
+	line-height: 1.45;
+	color: var(--text-body, #423E37);
+}
+
+/* Tab bar ------------------------------------------------------------------- */
+.t5-tabs__inner {
+	max-width: 1240px;
+	margin: 0 auto;
+	padding: 48px 32px 96px;
+}
+
+.t5-tabs__bar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0 8px;
+	margin-bottom: 56px;
+	border-bottom: 1px solid var(--color-stone-200, #E1DDD5);
+}
+
+.t5-tabs__tab {
+	position: relative;
+	display: inline-block;
+	padding: 18px 26px;
+	margin-bottom: -1px;
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 17px;
+	line-height: 1;
+	text-transform: uppercase;
+	letter-spacing: var(--tracking-caps, 0.08em);
+	text-decoration: none;
+	color: var(--text-strong, #1F1D19);
+	border-bottom: 3px solid transparent;
+	transition: color var(--duration-base, 200ms) ease, border-color var(--duration-base, 200ms) ease;
+}
+
+.t5-tabs__tab:hover {
+	color: var(--brand-accent, #8E231E);
+}
+
+.t5-tabs__tab.is-active {
+	color: var(--brand-accent, #8E231E);
+	border-bottom-color: var(--brand-accent, #8E231E);
+}
+
+.t5-tabs__tab:focus-visible {
+	outline: none;
+	box-shadow: var(--shadow-focus, 0 0 0 3px rgba(168, 48, 42, 0.45));
+	border-radius: var(--radius-sm, 3px);
+}
+
+/* Panels -------------------------------------------------------------------- */
+.t5-tabs__panel {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	gap: 48px 64px;
+	align-items: center;
+}
+
+/* Stacked (no-JS) — space the panels apart so they read as separate sections. */
+.t5-tabs__panel + .t5-tabs__panel {
+	margin-top: 72px;
+}
+
+.t5-tabs.is-enhanced .t5-tabs__panel:not(.is-active) {
+	display: none;
+}
+
+.t5-tabs.is-enhanced .t5-tabs__panel + .t5-tabs__panel {
+	margin-top: 0;
+}
+
+.t5-tabs__content {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+/* Badge — solid red pill; the one place a filled red mark sits above a heading,
+   flagging the metal specialty per the "metal leads" principle. */
+.t5-tabs__badge {
+	display: inline-block;
+	margin-bottom: 26px;
+	padding: 8px 16px;
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 13px;
+	line-height: 1;
+	text-transform: uppercase;
+	letter-spacing: var(--tracking-caps, 0.08em);
+	color: var(--text-inverse, #fff);
+	background: var(--brand-accent, #8E231E);
+	border-radius: var(--radius-pill, 999px);
+}
+
+.t5-tabs__heading {
+	margin: 0 0 22px;
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: clamp(32px, 3.4vw, 50px);
+	line-height: 1;
+	text-transform: uppercase;
+	color: var(--text-strong, #1F1D19);
+}
+
+.t5-tabs__body {
+	margin: 0 0 30px;
+	font-family: var(--font-body);
+	font-size: 19px;
+	line-height: 1.6;
+	color: var(--text-body, #423E37);
+}
+
+/* Checklist — two columns of red check marks. */
+.t5-tabs__list {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 14px 24px;
+	width: 100%;
+	margin: 0 0 40px;
+	padding: 0;
+	list-style: none;
+}
+
+.t5-tabs__list li {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	font-family: var(--font-body);
+	font-size: 17px;
+	line-height: 1.4;
+	color: var(--text-strong, #1F1D19);
+}
+
+.t5-tabs__check {
+	flex: 0 0 auto;
+	margin-top: 3px;
+	color: var(--brand-accent, #8E231E);
+}
+
+/* CTA — red pill with a white circled arrow, same family as the header CTA. */
+.t5-tabs__cta {
+	display: inline-flex;
+	align-items: center;
+	gap: 16px;
+	padding: 10px 10px 10px 28px;
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 15px;
+	line-height: 1;
+	text-transform: uppercase;
+	letter-spacing: var(--tracking-caps, 0.08em);
+	text-decoration: none;
+	color: var(--text-inverse, #fff);
+	background: var(--brand-accent, #8E231E);
+	border-radius: var(--radius-pill, 999px);
+	transition: background var(--duration-base, 200ms) ease, transform var(--duration-base, 200ms) ease;
+}
+
+.t5-tabs__cta:hover {
+	background: var(--brand-accent-hover, #A8302A);
+	color: var(--text-inverse, #fff);
+}
+
+.t5-tabs__cta:active {
+	transform: translateY(1px);
+}
+
+.t5-tabs__cta-arrow {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	background: var(--text-inverse, #fff);
+	color: var(--brand-accent, #8E231E);
+	transition: transform var(--duration-base, 200ms) var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.t5-tabs__cta:hover .t5-tabs__cta-arrow {
+	transform: translateX(3px);
+}
+
+/* Media — real image or the charcoal blueprint placeholder. */
+.t5-tabs__media {
+	position: relative;
+	margin: 0;
+	border-radius: var(--radius-xl, 14px);
+	overflow: hidden;
+	background: var(--color-charcoal-800, #292622);
+	aspect-ratio: 8 / 5;
+}
+
+.t5-tabs__media.has-image img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.t5-tabs__caption {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 12px 18px;
+	font-family: var(--font-mono);
+	font-size: 13px;
+	color: rgba(255, 255, 255, 0.85);
+	background: linear-gradient(to top, rgba(31, 29, 25, 0.85), rgba(31, 29, 25, 0));
+}
+
+.t5-tabs__media.is-blueprint {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 14px;
+	color: var(--color-stone-300, #C9C4B9);
+	background-image:
+		repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.07) 0 1px, transparent 1px 28px),
+		repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.07) 0 1px, transparent 1px 28px);
+}
+
+.t5-tabs__media-label {
+	max-width: 70%;
+	font-family: var(--font-mono);
+	font-size: 15px;
+	line-height: 1.4;
+	text-align: center;
+}
+
+/* Responsive ---------------------------------------------------------------- */
+@media (max-width: 1024px) {
+	.t5-tabs__panel {
+		grid-template-columns: 1fr;
+		gap: 36px;
+	}
+
+	.t5-tabs__media {
+		order: -1;
+	}
+}
+
+@media (max-width: 640px) {
+	.t5-tabs__header-inner {
+		padding: 48px 20px 64px;
+	}
+
+	.t5-tabs__inner {
+		padding: 32px 20px 72px;
+	}
+
+	.t5-tabs__bar {
+		margin-bottom: 40px;
+	}
+
+	.t5-tabs__tab {
+		padding: 14px 16px;
+		font-size: 15px;
+	}
+
+	.t5-tabs__list {
+		grid-template-columns: 1fr;
+	}
+
+	.t5-tabs__cta {
+		width: 100%;
+		justify-content: space-between;
+	}
+}
