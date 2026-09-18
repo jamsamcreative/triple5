@@ -12,12 +12,12 @@ The custom-code repo for **triple5.local**, the WordPress marketing site for **T
 
 - **Local dev site:** `triple5.local` (WordPress 7.0.1 · PHP 8.2 · MySQL 8.4), managed by **Local** (Flywheel/WP Engine) at `~/Local Sites/triple5`.
 - **This repo** tracks **custom code only** (theme + brand mu-plugin). WordPress core and content live in the Local site and are intentionally NOT version-controlled here.
-- **Remote:** `github.com/jamsamcreative/triple5` (nothing pushed yet).
+- **Remote:** `github.com/jamsamcreative/triple5` — `main` tracks `origin/main`, pushed 2026-09-18.
 - **Connection model:** real files live here in the repo and are **symlinked into the Local site**, so edits here go live immediately on `triple5.local`. See README.md.
 
 ## Current State
 
-WordPress site being branded. Active theme is **Themeco Pro** (v6.8.11) with Cornerstone builder bundled. Brand tokens are wired in site-wide via a must-use plugin. Two commits: `02ca37e` (brand, theme, header) and `c9eff33` (2026-09-18: full element library, Quote Requests dashboard, charcoal/red recolor). **Nothing pushed yet** — remote `jamsamcreative/triple5` is empty. Working tree clean as of the c9eff33 commit.
+WordPress site being branded. Active theme is **Themeco Pro** (v6.8.11) with Cornerstone builder bundled. Brand tokens are wired in site-wide via a must-use plugin. Two commits: `02ca37e` (brand, theme, header) and `c9eff33` (2026-09-18: full element library, Quote Requests dashboard, charcoal/red recolor). All pushed to `origin/main` (2026-09-18); working tree clean.
 
 ### What's Working
 - **`wp-content/themes/triple5/`** — custom starter **block theme** (style.css, theme.json, functions.php, templates/index.html, parts/header+footer). Symlinked into the Local site.
@@ -52,7 +52,6 @@ WordPress site being branded. Active theme is **Themeco Pro** (v6.8.11) with Cor
 Header is the **native Cornerstone header** (ID 26), editable in Pro → Headers. The coded `triple5-header` mu-plugin was the first attempt and is **disabled** (kept for reference/rollback). Pro's default chrome is removed per page via `template-blank-5.php`. **No footer exists yet** on any page.
 
 ### Known Issues / Tech Debt
-- **Not pushed:** both commits are local only — push to `jamsamcreative/triple5` when the user asks.
 - **Logo strip band is not full-width** (ends ~2/3 across at 1512px) — pre-existing layout issue in `triple5-logos` placement/CSS, noticed 2026-09-15.
 - **Pro license not validated** — updates/template library/extensions locked until you enter the Themeco key in wp-admin (Pro/Cornerstone → Validation). Interactive, browser-only.
 - **Pro global color/font pickers** in the Cornerstone UI still need to be set to match the brand tokens (interactive). The mu-plugin gives a CSS baseline; the builder's own swatches are separate.
