@@ -47,7 +47,7 @@ a:hover { color: var(--text-link-hover); }
   border-radius: var(--radius-md);
 }
 
-/* Focus ring — steel blue, matches design system */
+/* Focus ring — red, matches design system */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,

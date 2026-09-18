@@ -1,0 +1,339 @@
+/**
+ * Triple 5 Hero element styles.
+ * Built entirely on the brand tokens loaded by the triple5-brand mu-plugin
+ * (--brand-*, --color-*, --font-*, --radius-*, --shadow-*). No hard-coded brand
+ * colors — swap a token, this follows.
+ */
+
+.t5-hero {
+	position: relative;
+	overflow: hidden;
+	isolation: isolate;
+	background: var(--color-navy-900);
+	--t5-overlay-opacity: 0.82;
+}
+
+/* Background layers ------------------------------------------------------- */
+.t5-hero__bg,
+.t5-hero__scrim {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+}
+
+.t5-hero__bg {
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+/* Blueprint placeholder: charcoal field + faint white hairline grid (brand motif). */
+.t5-hero__bg.is-blueprint {
+	background-color: var(--color-navy-800);
+	background-image:
+		repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 28px),
+		repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 28px);
+}
+
+/* Left-weighted dark scrim for text legibility (allowed gradient — overlay only). */
+.t5-hero__scrim {
+	background: linear-gradient(
+		90deg,
+		rgba(31, 29, 25, var(--t5-overlay-opacity)) 0%,
+		rgba(31, 29, 25, calc(var(--t5-overlay-opacity) * 0.82)) 45%,
+		rgba(31, 29, 25, calc(var(--t5-overlay-opacity) * 0.4)) 100%
+	);
+}
+
+/* Layout ------------------------------------------------------------------ */
+.t5-hero__inner {
+	position: relative;
+	z-index: 1;
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 72px 32px;
+	display: grid;
+	grid-template-columns: 1.15fr 0.85fr;
+	gap: 48px;
+	align-items: center;
+}
+
+/* Copy column ------------------------------------------------------------- */
+.t5-hero__title {
+	margin: 0 0 18px;
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: clamp(38px, 5vw, 62px);
+	line-height: 0.98;
+	text-transform: uppercase;
+	color: var(--color-white);
+	letter-spacing: 0.01em;
+}
+
+.t5-hero__accent {
+	color: var(--brand-accent);
+}
+
+.t5-hero__sub {
+	margin: 0 0 20px;
+	max-width: 460px;
+	font-family: var(--font-body);
+	font-size: 18px;
+	line-height: 1.55;
+	color: rgba(255, 255, 255, 0.82);
+}
+
+.t5-hero__financing {
+	margin-bottom: 18px;
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 15px;
+	text-transform: uppercase;
+	letter-spacing: var(--tracking-caps);
+	color: var(--color-white);
+}
+
+/* Review badges ----------------------------------------------------------- */
+.t5-hero__badges {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 14px;
+}
+
+.t5-hero__badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 8px 14px;
+	background: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	border-radius: var(--radius-md);
+	text-decoration: none;
+}
+
+/* Linked badge — subtle affordance on hover. */
+a.t5-hero__badge.is-link {
+	transition: background var(--duration-fast, 120ms) ease, border-color var(--duration-fast, 120ms) ease, transform var(--duration-fast, 120ms) ease;
+}
+
+a.t5-hero__badge.is-link:hover {
+	background: rgba(255, 255, 255, 0.16);
+	border-color: rgba(255, 255, 255, 0.32);
+}
+
+a.t5-hero__badge.is-link:active {
+	transform: translateY(1px);
+}
+
+.t5-hero__badge .screen-reader-text {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	a.t5-hero__badge.is-link {
+		transition: none;
+	}
+}
+
+.t5-hero__badge-mark {
+	width: 30px;
+	height: 30px;
+	flex: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: var(--radius-pill);
+	background: var(--color-white);
+	color: var(--brand-accent);
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: 15px;
+}
+
+.t5-hero__badge-body {
+	display: flex;
+	flex-direction: column;
+	line-height: 1.2;
+}
+
+.t5-hero__badge-rating {
+	color: var(--color-white);
+	font-weight: 700;
+	font-size: 14px;
+}
+
+.t5-hero__stars {
+	color: var(--color-warning);
+	letter-spacing: 1px;
+}
+
+.t5-hero__badge-src {
+	color: rgba(255, 255, 255, 0.6);
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+/* Lead form card ---------------------------------------------------------- */
+.t5-hero__formwrap {
+	background: rgba(31, 29, 25, 0.78);
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	border-radius: var(--radius-lg);
+	padding: 28px;
+	box-shadow: var(--shadow-lg);
+}
+
+.t5-hero__form-heading {
+	margin-bottom: 18px;
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: 20px;
+	line-height: 1.15;
+	text-transform: uppercase;
+	letter-spacing: 0.02em;
+	color: var(--color-white);
+}
+
+.t5-hero__row2 {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 12px;
+}
+
+.t5-hero__input {
+	width: 100%;
+	margin-bottom: 12px;
+	padding: 11px 13px;
+	background: var(--color-white);
+	border: 1px solid var(--color-stone-200);
+	border-radius: var(--radius-sm);
+	color: var(--text-strong);
+	font-family: var(--font-body);
+	font-size: 14px;
+	outline: none;
+	transition: box-shadow var(--duration-fast, 120ms) ease, border-color var(--duration-fast, 120ms) ease;
+}
+
+.t5-hero__row2 .t5-hero__input {
+	margin-bottom: 12px;
+}
+
+.t5-hero__input::placeholder {
+	color: var(--color-stone-500);
+}
+
+.t5-hero__input:focus {
+	border-color: var(--brand-secondary);
+	box-shadow: var(--shadow-focus);
+}
+
+.t5-hero__textarea {
+	resize: vertical;
+	min-height: 84px;
+}
+
+/* Honeypot — hidden from humans, present for bots. */
+.t5-hero__hp {
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+/* Submit ------------------------------------------------------------------ */
+.t5-hero__submit {
+	width: 100%;
+	margin-top: 4px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 14px 20px;
+	background: var(--brand-accent);
+	border: none;
+	border-radius: var(--radius-pill);
+	color: var(--color-white);
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 15px;
+	text-transform: uppercase;
+	letter-spacing: var(--tracking-caps);
+	cursor: pointer;
+	transition: background var(--duration-fast, 120ms) ease, transform var(--duration-fast, 120ms) ease;
+}
+
+.t5-hero__submit:hover {
+	background: var(--brand-accent-hover);
+}
+
+.t5-hero__submit:active {
+	background: var(--brand-accent-press);
+	transform: translateY(1px);
+}
+
+.t5-hero__arrow {
+	flex: none;
+}
+
+/* Submit status notice ---------------------------------------------------- */
+.t5-hero__notice {
+	margin-bottom: 16px;
+	padding: 12px 14px;
+	border-radius: var(--radius-sm);
+	font-family: var(--font-body);
+	font-size: 14px;
+	line-height: 1.45;
+}
+
+.t5-hero__notice.is-success {
+	background: var(--color-success-soft);
+	color: var(--color-success);
+	border: 1px solid var(--color-success);
+}
+
+.t5-hero__notice.is-error {
+	background: var(--color-danger-soft);
+	color: var(--color-danger);
+	border: 1px solid var(--color-danger);
+}
+
+/* Responsive -------------------------------------------------------------- */
+@media (max-width: 900px) {
+	.t5-hero__inner {
+		grid-template-columns: 1fr;
+		gap: 32px;
+		padding: 48px 22px;
+	}
+
+	.t5-hero__scrim {
+		background: linear-gradient(
+			180deg,
+			rgba(31, 29, 25, var(--t5-overlay-opacity)) 0%,
+			rgba(31, 29, 25, calc(var(--t5-overlay-opacity) * 0.9)) 100%
+		);
+	}
+}
+
+@media (max-width: 480px) {
+	.t5-hero__row2 {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.t5-hero__input,
+	.t5-hero__submit {
+		transition: none;
+	}
+}

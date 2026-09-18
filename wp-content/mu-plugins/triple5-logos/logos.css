@@ -1,0 +1,126 @@
+/**
+ * Triple 5 Logo Strip styles. Built on the brand tokens loaded by triple5-brand.
+ */
+
+.t5-logos {
+	position: relative;
+	overflow: hidden;
+}
+
+/* Band backgrounds -------------------------------------------------------- */
+.t5-logos.is-bg-navy {
+	background-color: var(--color-charcoal-900, #1F1D19);
+	background-image:
+		repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 30px),
+		repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 30px);
+	--t5l-fg: #ffffff;
+	--t5l-muted: rgba(255, 255, 255, 0.62);
+}
+
+.t5-logos.is-bg-coal {
+	background-color: #14110F;
+	background-image:
+		repeating-linear-gradient(0deg, rgba(142, 35, 30, 0.14) 0 1px, transparent 1px 30px),
+		repeating-linear-gradient(90deg, rgba(142, 35, 30, 0.14) 0 1px, transparent 1px 30px);
+	--t5l-fg: #ffffff;
+	--t5l-muted: rgba(255, 255, 255, 0.6);
+}
+
+.t5-logos.is-bg-stone {
+	background-color: var(--color-stone-100, #EFEDE8);
+	--t5l-fg: var(--color-charcoal-900, #1F1D19);
+	--t5l-muted: var(--color-stone-500, #827C70);
+}
+
+.t5-logos__inner {
+	position: relative;
+	z-index: 1;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 40px 32px;
+}
+
+/* Heading ----------------------------------------------------------------- */
+.t5-logos__heading {
+	margin: 0 0 24px;
+	text-align: center;
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 13px;
+	text-transform: uppercase;
+	letter-spacing: var(--tracking-caps, 0.08em);
+	color: var(--t5l-muted);
+}
+
+/* Row --------------------------------------------------------------------- */
+.t5-logos__row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 20px 48px;
+}
+
+.t5-logos__item {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	color: var(--t5l-fg);
+	text-decoration: none;
+	opacity: 0.92;
+	transition: opacity var(--duration-fast, 120ms) ease, transform var(--duration-fast, 120ms) ease;
+}
+
+a.t5-logos__item:hover {
+	opacity: 1;
+	transform: translateY(-1px);
+}
+
+.t5-logos__mark {
+	flex: none;
+	color: var(--brand-accent, #8E231E);
+}
+
+.t5-logos__name {
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 19px;
+	letter-spacing: 0.01em;
+	color: var(--t5l-fg);
+}
+
+/* Real logo images -------------------------------------------------------- */
+.t5-logos__img {
+	display: block;
+	max-height: 40px;
+	width: auto;
+	object-fit: contain;
+}
+
+/* Mono treatment: knock uploaded logos to solid white for the dark bands. */
+.t5-logos.is-bg-navy .t5-logos__img.is-mono,
+.t5-logos.is-bg-coal .t5-logos__img.is-mono {
+	filter: brightness(0) invert(1);
+	opacity: 0.9;
+}
+
+.t5-logos.is-bg-stone .t5-logos__img.is-mono {
+	filter: grayscale(1);
+	opacity: 0.8;
+}
+
+/* Responsive -------------------------------------------------------------- */
+@media (max-width: 700px) {
+	.t5-logos__row {
+		gap: 18px 32px;
+	}
+	.t5-logos__name {
+		font-size: 16px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.t5-logos__item {
+		transition: none;
+	}
+}

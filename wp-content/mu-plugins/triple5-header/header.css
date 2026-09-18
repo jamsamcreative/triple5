@@ -21,7 +21,7 @@
 
 /* ---------- Top bar (clay) ---------- */
 .t5-topbar {
-	background: var(--brand-accent, #C24B27);
+	background: var(--brand-accent, #8E231E);
 	color: var(--color-white, #fff);
 }
 
@@ -62,13 +62,13 @@
 }
 
 .t5-topbar__item:hover {
-	color: var(--color-clay-100, #F8E5DA);
+	color: var(--color-red-100, #F5E1DF);
 }
 
 /* ---------- Nav row (navy) ---------- */
 .t5-nav {
-	background: var(--brand-primary, #15293C);
-	border-bottom: 3px solid var(--brand-accent, #C24B27);
+	background: var(--brand-primary, #292622);
+	border-bottom: 3px solid var(--brand-accent, #8E231E);
 }
 
 .t5-nav__inner {
@@ -112,7 +112,7 @@
 
 .t5-nav__link:hover,
 .t5-nav__link.is-active {
-	color: var(--brand-accent, #C24B27);
+	color: var(--brand-accent, #8E231E);
 }
 
 /* ---------- CTA button ---------- */
@@ -121,7 +121,7 @@
 	display: inline-flex;
 	align-items: center;
 	gap: 14px;
-	background: var(--brand-accent, #C24B27);
+	background: var(--brand-accent, #8E231E);
 	color: var(--color-white, #fff);
 	text-decoration: none;
 	font-weight: var(--weight-bold, 700);
@@ -135,7 +135,7 @@
 }
 
 .t5-nav__cta:hover {
-	background: var(--brand-accent-hover, #D9622F);
+	background: var(--brand-accent-hover, #A8302A);
 }
 
 .t5-nav__cta:active {
@@ -150,7 +150,7 @@
 	height: 34px;
 	border-radius: 999px;
 	background: var(--color-white, #fff);
-	color: var(--brand-accent, #C24B27);
+	color: var(--brand-accent, #8E231E);
 	flex: none;
 }
 

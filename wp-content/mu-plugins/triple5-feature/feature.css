@@ -1,0 +1,244 @@
+/**
+ * Triple 5 Feature Section styles. Built on the brand tokens loaded by
+ * triple5-brand (--brand-*, --color-*, --font-*, --radius-*, --shadow-*).
+ */
+
+.t5-feature {
+	background: var(--surface-page, #F8F7F4);
+}
+
+.t5-feature__inner {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 80px 32px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 56px;
+	align-items: center;
+}
+
+/* Flip: put the image column on the right. */
+.t5-feature.is-image-right .t5-feature__media {
+	order: 2;
+}
+
+/* Image column ------------------------------------------------------------ */
+.t5-feature__frame {
+	position: relative;
+	border-radius: var(--radius-xl, 14px);
+	overflow: hidden;
+	box-shadow: var(--shadow-lg);
+}
+
+.t5-feature__img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	min-height: 420px;
+	object-fit: cover;
+}
+
+/* Blueprint placeholder — charcoal field + faint white grid (brand motif). */
+.t5-feature__img.is-blueprint {
+	min-height: 480px;
+	background-color: var(--color-charcoal-800, #292622);
+	background-image:
+		repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 28px),
+		repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 28px);
+}
+
+/* Experience badge — red panel in the bottom-left with a scooped top-right corner. */
+.t5-feature__badge {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	padding: 22px 40px 22px 26px;
+	background: var(--brand-accent, #8E231E);
+	color: var(--color-white, #fff);
+	border-top-right-radius: 72px;
+	max-width: 68%;
+}
+
+.t5-feature__badge-num {
+	display: block;
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: 42px;
+	line-height: 1;
+}
+
+.t5-feature__badge-label {
+	display: block;
+	margin-top: 4px;
+	font-family: var(--font-body);
+	font-size: 14px;
+	line-height: 1.3;
+	color: rgba(255, 255, 255, 0.92);
+}
+
+/* Content column ---------------------------------------------------------- */
+.t5-feature__eyebrow {
+	margin: 0 0 14px;
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 14px;
+	text-transform: uppercase;
+	letter-spacing: var(--tracking-caps, 0.08em);
+	color: var(--brand-accent, #8E231E);
+}
+
+.t5-feature__slash {
+	opacity: 0.8;
+}
+
+.t5-feature__heading {
+	margin: 0 0 18px;
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: clamp(30px, 3.6vw, 46px);
+	line-height: 1.04;
+	color: var(--text-strong, #1F1D19);
+}
+
+.t5-feature__body {
+	margin: 0 0 26px;
+	font-family: var(--font-body);
+	font-size: 17px;
+	line-height: 1.6;
+	color: var(--text-body, #423E37);
+}
+
+/* Middle row: checklist + stat card side by side. */
+.t5-feature__midrow {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 32px;
+	margin-bottom: 26px;
+}
+
+.t5-feature__midcol {
+	flex: 1 1 260px;
+}
+
+.t5-feature__list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: grid;
+	gap: 14px;
+}
+
+.t5-feature__list li {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 18px;
+	color: var(--text-strong, #1F1D19);
+}
+
+.t5-feature__check {
+	flex: none;
+	color: var(--brand-accent, #8E231E);
+}
+
+/* Stat card — solid red, the one accent moment. */
+.t5-feature__stat {
+	flex: 0 0 auto;
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 24px 30px;
+	background: var(--brand-accent, #8E231E);
+	color: var(--color-white, #fff);
+	border-radius: var(--radius-lg, 10px);
+	box-shadow: var(--shadow-md);
+}
+
+.t5-feature__stat-icon {
+	flex: none;
+	color: rgba(255, 255, 255, 0.9);
+}
+
+.t5-feature__stat-num {
+	display: block;
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: 38px;
+	line-height: 1;
+}
+
+.t5-feature__stat-label {
+	display: block;
+	margin-top: 4px;
+	font-size: 14px;
+	line-height: 1.25;
+	color: rgba(255, 255, 255, 0.92);
+	max-width: 130px;
+}
+
+.t5-feature__body2 {
+	margin: 0 0 26px;
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 19px;
+	line-height: 1.4;
+	color: var(--text-strong, #1F1D19);
+}
+
+/* Button — solid red, uppercase display, small squared radius (brand button). */
+.t5-feature__btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 14px 26px;
+	background: var(--brand-accent, #8E231E);
+	color: var(--color-white, #fff);
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 15px;
+	text-transform: uppercase;
+	letter-spacing: var(--tracking-caps, 0.08em);
+	text-decoration: none;
+	border-radius: var(--radius-md, 6px);
+	transition: background var(--duration-fast, 120ms) ease, transform var(--duration-fast, 120ms) ease;
+}
+
+.t5-feature__btn:hover {
+	background: var(--brand-accent-hover, #A8302A);
+}
+
+.t5-feature__btn:active {
+	background: var(--brand-accent-press, #741B17);
+	transform: translateY(1px);
+}
+
+.t5-feature__chev {
+	flex: none;
+}
+
+/* Responsive -------------------------------------------------------------- */
+@media (max-width: 900px) {
+	.t5-feature__inner {
+		grid-template-columns: 1fr;
+		gap: 36px;
+		padding: 56px 22px;
+	}
+
+	/* Stack image first regardless of flip on small screens. */
+	.t5-feature.is-image-right .t5-feature__media {
+		order: 0;
+	}
+
+	.t5-feature__stat {
+		width: 100%;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.t5-feature__btn {
+		transition: none;
+	}
+}

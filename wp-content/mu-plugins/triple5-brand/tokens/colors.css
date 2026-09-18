@@ -1,27 +1,28 @@
 /* Triple 5 Construction — Color tokens
-   Palette: deep slate navy (trust, protection) + warm clay/terracotta
-   (shingles, warmth) over warm stone neutrals. Down-to-earth, sturdy. */
+   Palette: charcoal (structure, steel, weight) + brick red (the single accent)
+   over warm stone neutrals. Down-to-earth, sturdy, industrial.
+   Recolored 2026-09-15 from the navy/clay palette — see DESIGN_CONTEXT.md. */
 
 :root {
-  /* --- Navy (primary brand — roofs, trust, structure) --- */
-  --color-navy-900: #0E1D2B;
-  --color-navy-800: #15293C;
-  --color-navy-700: #1E3A54;
-  --color-navy-600: #2A4E6E;
-  --color-navy-500: #3A6488;
+  /* --- Charcoal (primary brand — dark fields, structure, trust) --- */
+  --color-charcoal-900: #1F1D19;
+  --color-charcoal-800: #292622;
+  --color-charcoal-700: #38342F;
+  --color-charcoal-600: #4A453F;
+  --color-charcoal-500: #605A52;
 
-  /* --- Steel blue (secondary — sky, cool support) --- */
-  --color-steel-600: #3E6B89;
-  --color-steel-500: #5486A4;
-  --color-steel-300: #9CBACD;
-  --color-steel-100: #E4EDF3;
+  /* --- Iron (secondary — neutral cool-gray support) --- */
+  --color-iron-600: #6B665E;
+  --color-iron-500: #857E74;
+  --color-iron-300: #BDB7AD;
+  --color-iron-100: #ECE9E3;
 
-  /* --- Clay (accent — terracotta shingle warmth) --- */
-  --color-clay-700: #A63C1E;
-  --color-clay-600: #C24B27;
-  --color-clay-500: #D9622F;
-  --color-clay-300: #EDA079;
-  --color-clay-100: #F8E5DA;
+  /* --- Red (accent — brick red, reserved for the key CTA + highlights) --- */
+  --color-red-700: #741B17;
+  --color-red-600: #8E231E;
+  --color-red-500: #A8302A;
+  --color-red-300: #D48F8B;
+  --color-red-100: #F5E1DF;
 
   /* --- Stone (warm neutrals) --- */
   --color-stone-50:  #F8F7F4;
@@ -43,35 +44,51 @@
   --color-warning-soft: #F8ECD3;
   --color-danger:  #C0392B;
   --color-danger-soft: #F6E0DD;
-  --color-info:    #3E6B89;
-  --color-info-soft: #E4EDF3;
+  --color-info:    #6B665E;
+  --color-info-soft: #ECE9E3;
+
+  /* ===== Deprecated aliases (pre-2026-09 names) — keep old CSS working ===== */
+  --color-navy-900: var(--color-charcoal-900);
+  --color-navy-800: var(--color-charcoal-800);
+  --color-navy-700: var(--color-charcoal-700);
+  --color-navy-600: var(--color-charcoal-600);
+  --color-navy-500: var(--color-charcoal-500);
+  --color-steel-600: var(--color-iron-600);
+  --color-steel-500: var(--color-iron-500);
+  --color-steel-300: var(--color-iron-300);
+  --color-steel-100: var(--color-iron-100);
+  --color-clay-700: var(--color-red-700);
+  --color-clay-600: var(--color-red-600);
+  --color-clay-500: var(--color-red-500);
+  --color-clay-300: var(--color-red-300);
+  --color-clay-100: var(--color-red-100);
 
   /* ===== Semantic aliases ===== */
-  --brand-primary:       var(--color-navy-800);
-  --brand-primary-hover: var(--color-navy-700);
-  --brand-primary-press: var(--color-navy-900);
-  --brand-secondary:     var(--color-steel-600);
-  --brand-accent:        var(--color-clay-600);
-  --brand-accent-hover:  var(--color-clay-500);
-  --brand-accent-press:  var(--color-clay-700);
+  --brand-primary:       var(--color-charcoal-800);
+  --brand-primary-hover: var(--color-charcoal-700);
+  --brand-primary-press: var(--color-charcoal-900);
+  --brand-secondary:     var(--color-iron-600);
+  --brand-accent:        var(--color-red-600);
+  --brand-accent-hover:  var(--color-red-500);
+  --brand-accent-press:  var(--color-red-700);
 
-  --text-strong:  var(--color-navy-900);
+  --text-strong:  var(--color-charcoal-900);
   --text-body:    var(--color-stone-700);
   --text-muted:   var(--color-stone-500);
   --text-inverse: var(--color-white);
-  --text-accent:  var(--color-clay-600);
-  --text-link:    var(--color-navy-700);
-  --text-link-hover: var(--color-clay-600);
+  --text-accent:  var(--color-red-600);
+  --text-link:    var(--color-charcoal-700);
+  --text-link-hover: var(--color-red-600);
 
   --surface-page:   var(--color-stone-50);
   --surface-card:   var(--color-white);
   --surface-raised: var(--color-white);
   --surface-sunken: var(--color-stone-100);
-  --surface-dark:   var(--color-navy-800);
-  --surface-accent-soft: var(--color-clay-100);
+  --surface-dark:   var(--color-charcoal-800);
+  --surface-accent-soft: var(--color-red-100);
 
   --border-subtle:  var(--color-stone-200);
   --border-default: var(--color-stone-300);
   --border-strong:  var(--color-stone-400);
-  --border-focus:   var(--color-steel-500);
+  --border-focus:   var(--color-red-500);
 }
