@@ -308,6 +308,21 @@ a.t5-hero__badge.is-link:active {
 	border: 1px solid var(--color-danger);
 }
 
+/* Homepage only: pull the hero up under the (translucent) nav so the photo runs
+   behind it; the padding keeps the copy clear of the header. Header height comes
+   from --t5-header-h, set in the Cornerstone header's custom CSS. */
+.home .t5-hero {
+	margin-top: calc(-1 * var(--t5-header-h, 158px));
+	padding-top: var(--t5-header-h, 158px);
+}
+
+/* Ease the scrim off across the header band so the photo actually reads through
+   the 50% nav; full strength resumes just above the headline. */
+.home .t5-hero__scrim {
+	-webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0, #000 calc(var(--t5-header-h, 158px) + 90px));
+	mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0, #000 calc(var(--t5-header-h, 158px) + 90px));
+}
+
 /* Responsive -------------------------------------------------------------- */
 @media (max-width: 900px) {
 	.t5-hero__inner {
