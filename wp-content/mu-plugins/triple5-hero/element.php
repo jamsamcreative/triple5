@@ -105,7 +105,7 @@ function triple5_hero_render( $data ) {
 	// Section CSS vars: overlay strength.
 	$overlay = max( 0, min( 100, intval( $data['t5_overlay'] ) ) ) / 100;
 
-	$bg_src      = isset( $data['t5_bg_image_src'] ) ? trim( (string) $data['t5_bg_image_src'] ) : '';
+	$bg_src      = isset( $data['t5_bg_image_src'] ) ? triple5_image_url( $data['t5_bg_image_src'] ) : '';
 	$blueprint   = ! empty( $data['t5_use_blueprint'] ) && '' === $bg_src;
 	$bg_classes  = 't5-hero__bg' . ( $blueprint ? ' is-blueprint' : '' );
 	$bg_style    = '' !== $bg_src ? ' style="background-image:url(\'' . esc_url( $bg_src ) . '\')"' : '';

@@ -57,3 +57,29 @@ add_action(
 		);
 	}
 );
+
+/**
+ * Resolve a Cornerstone image-control value to a URL.
+ *
+ * The builder's image picker stores attachment references like "88:full" (id:size),
+ * not URLs. Every Triple 5 element that outputs an image must pass the control
+ * value through this so uploads chosen in the builder actually render.
+ */
+function triple5_image_url( $value ) {
+	$value = trim( (string) $value );
+	if ( '' === $value ) {
+		return '';
+	}
+	if ( function_exists( 'cs_resolve_image_source' ) ) {
+		$resolved = cs_resolve_image_source( $value );
+		if ( is_string( $resolved ) && '' !== $resolved ) {
+			return $resolved;
+		}
+	}
+	// Fallback outside Cornerstone: "123:size" or bare "123" → attachment URL.
+	if ( preg_match( '/^(\d+)(?::([a-z0-9_-]+))?$/i', $value, $m ) ) {
+		$src = wp_get_attachment_image_src( (int) $m[1], $m[2] ?? 'full' );
+		return $src ? $src[0] : '';
+	}
+	return $value;
+}

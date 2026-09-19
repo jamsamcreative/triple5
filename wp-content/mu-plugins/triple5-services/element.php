@@ -78,7 +78,7 @@ function triple5_services_render( $data ) {
 		$url  = isset( $data[ "t5s_card{$i}_url" ] ) ? trim( (string) $data[ "t5s_card{$i}_url" ] ) : '';
 		$href = '' !== $url ? esc_url( $url ) : '#';
 		$tone = isset( $data[ "t5s_card{$i}_tone" ] ) && in_array( $data[ "t5s_card{$i}_tone" ], $valid_tones, true ) ? $data[ "t5s_card{$i}_tone" ] : 'navy';
-		$img  = isset( $data[ "t5s_card{$i}_image_src" ] ) ? trim( (string) $data[ "t5s_card{$i}_image_src" ] ) : '';
+		$img  = isset( $data[ "t5s_card{$i}_image_src" ] ) ? triple5_image_url( $data[ "t5s_card{$i}_image_src" ] ) : '';
 
 		if ( '' !== $img ) {
 			$media = '<div class="t5-services__media has-image" style="background-image:url(\'' . esc_url( $img ) . '\')"></div>';

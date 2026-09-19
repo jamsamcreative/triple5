@@ -153,7 +153,7 @@ function triple5_tabs_render( $data ) {
 		$cta     = trim( (string) ( $data[ "t5t_tab{$i}_cta" ] ?? '' ) );
 		$cta_url = trim( (string) ( $data[ "t5t_tab{$i}_cta_url" ] ?? '' ) );
 		$caption = trim( (string) ( $data[ "t5t_tab{$i}_caption" ] ?? '' ) );
-		$img     = trim( (string) ( $data[ "t5t_tab{$i}_image_src" ] ?? '' ) );
+		$img     = triple5_image_url( $data[ "t5t_tab{$i}_image_src" ] ?? '' );
 
 		$items = '';
 		foreach ( preg_split( '/\r\n|\r|\n/', (string) ( $data[ "t5t_tab{$i}_list" ] ?? '' ) ) as $line ) {

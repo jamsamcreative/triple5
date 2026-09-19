@@ -59,7 +59,7 @@ function triple5_logos_render( $data ) {
 	$items = '';
 	foreach ( array_keys( triple5_logos_defaults() ) as $i ) {
 		$name = isset( $data[ "t5l_item{$i}_name" ] ) ? trim( (string) $data[ "t5l_item{$i}_name" ] ) : '';
-		$img  = isset( $data[ "t5l_item{$i}_image_src" ] ) ? trim( (string) $data[ "t5l_item{$i}_image_src" ] ) : '';
+		$img  = isset( $data[ "t5l_item{$i}_image_src" ] ) ? triple5_image_url( $data[ "t5l_item{$i}_image_src" ] ) : '';
 		if ( '' === $name && '' === $img ) {
 			continue;
 		}

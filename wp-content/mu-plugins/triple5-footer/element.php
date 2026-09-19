@@ -112,7 +112,7 @@ function triple5_footer_render( $data ) {
 	};
 
 	// Brand column.
-	$logo_src = trim( (string) $data['t5ft_logo_src'] );
+	$logo_src = triple5_image_url( $data['t5ft_logo_src'] );
 	if ( '' === $logo_src ) {
 		$logo_src = content_url( 'mu-plugins/triple5-brand/assets/logo-white.png' );
 	}
@@ -168,7 +168,7 @@ function triple5_footer_render( $data ) {
 	// Map band.
 	$map = '';
 	if ( ! empty( $data['t5ft_show_map'] ) ) {
-		$src     = trim( (string) $data['t5ft_map_src'] );
+		$src     = triple5_image_url( $data['t5ft_map_src'] );
 		$caption = trim( (string) $data['t5ft_map_caption'] );
 		$map_url = trim( (string) $data['t5ft_map_url'] );
 		if ( '' !== $src ) {

@@ -72,7 +72,7 @@ function triple5_feature_render( $data ) {
 	$section_cl = 't5-feature is-image-' . $side;
 
 	// --- Image column ---
-	$img_src   = isset( $data['t5f_image_src'] ) ? trim( (string) $data['t5f_image_src'] ) : '';
+	$img_src   = isset( $data['t5f_image_src'] ) ? triple5_image_url( $data['t5f_image_src'] ) : '';
 	$blueprint = '' === $img_src;
 	$media     = '' !== $img_src
 		? '<img class="t5-feature__img" src="' . esc_url( $img_src ) . '" alt="">'

@@ -103,7 +103,7 @@ function triple5_reasons_render( $data ) {
 		: '';
 
 	// Photo.
-	$img = trim( (string) $data['t5rs_image_src'] );
+	$img = triple5_image_url( $data['t5rs_image_src'] );
 	$alt = trim( (string) $data['t5rs_image_alt'] );
 	if ( '' !== $img ) {
 		$photo = '<figure class="t5-reasons__media has-image"><img src="' . esc_url( $img ) . '" alt="' . esc_attr( $alt ) . '" loading="lazy"></figure>';
