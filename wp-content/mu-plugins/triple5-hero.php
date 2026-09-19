@@ -66,6 +66,8 @@ add_action(
 			array( 'triple5-tokens' ),
 			TRIPLE5_HERO_VERSION
 		);
+		// Background parallax (progressive enhancement; no-ops under reduced motion).
+		wp_enqueue_script( 'triple5-hero', triple5_hero_url( 'hero.js' ), array(), TRIPLE5_HERO_VERSION, true );
 	},
 	21
 );

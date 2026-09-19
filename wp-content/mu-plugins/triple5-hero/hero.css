@@ -27,6 +27,16 @@
 	background-repeat: no-repeat;
 }
 
+/* Parallax: hero.js moves the bg layer at a fraction of scroll speed. The layer is
+   oversized vertically so the slower-moving photo never shows a gap at either
+   edge, and the transform is GPU-composited. Under reduced motion the script
+   never runs, so the layer just sits at its normal size. */
+.t5-hero[data-t5-parallax] .t5-hero__bg {
+	top: -22%;
+	bottom: -22%;
+	will-change: transform;
+}
+
 /* Blueprint placeholder: charcoal field + faint white hairline grid (brand motif). */
 .t5-hero__bg.is-blueprint {
 	background-color: var(--color-navy-800);

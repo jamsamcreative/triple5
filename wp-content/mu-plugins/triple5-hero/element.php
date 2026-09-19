@@ -34,6 +34,7 @@ $triple5_hero_values = cs_compose_values(
 		't5_bg_image_width'  => cs_value( '', 'markup', true ),
 		't5_bg_image_height' => cs_value( '', 'markup', true ),
 		't5_overlay'         => cs_value( '82%', 'markup', true ),
+		't5_parallax'        => cs_value( true, 'markup', true ),
 		't5_use_blueprint'   => cs_value( true, 'markup', true ),
 
 		't5_badge1_label'    => cs_value( 'Google', 'markup', true ),
@@ -137,7 +138,8 @@ function triple5_hero_render( $data ) {
 		. ( '' !== $badges ? '<div class="t5-hero__badges">' . $badges . '</div>' : '' )
 		. '</div>';
 
-	return '<section class="t5-hero" style="--t5-overlay-opacity:' . esc_attr( $overlay ) . '">'
+	$parallax = ! empty( $data['t5_parallax'] ) ? ' data-t5-parallax="0.35"' : '';
+	return '<section class="t5-hero"' . $parallax . ' style="--t5-overlay-opacity:' . esc_attr( $overlay ) . '">'
 		. '<div class="' . esc_attr( $bg_classes ) . '"' . $bg_style . '></div>'
 		. '<div class="t5-hero__scrim"></div>'
 		. '<div class="t5-hero__inner">' . $copy . $form . '</div>'
@@ -187,6 +189,7 @@ function triple5_hero_builder_setup() {
 				'type'  => 'image',
 				'title' => 'Background image',
 			),
+			array( 'key' => 't5_parallax', 'type' => 'toggle', 'label' => 'Parallax background on scroll' ),
 			array(
 				'key'     => 't5_overlay',
 				'type'    => 'unit-slider',
