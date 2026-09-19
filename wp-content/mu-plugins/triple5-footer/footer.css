@@ -1,0 +1,219 @@
+/**
+ * Triple 5 Footer styles. Built on the brand tokens loaded by triple5-brand
+ * (--brand-*, --color-*, --font-*, --radius-*).
+ *
+ * Charcoal-900 field → 4-col grid (brand / quick links / contact / hours+social)
+ * → full-width service-area map band → slim mono legal bar on charcoal-800.
+ */
+
+.t5-footer {
+	background: var(--color-charcoal-900, #1F1D19);
+	color: var(--color-stone-300, #C9C4B9);
+	font-family: var(--font-body);
+}
+
+.t5-footer a {
+	color: inherit;
+	text-decoration: none;
+	transition: color var(--duration-base, 200ms) ease;
+}
+
+.t5-footer a:hover {
+	color: var(--text-inverse, #fff);
+}
+
+.t5-footer__inner {
+	max-width: 1240px;
+	margin: 0 auto;
+	padding: 80px 32px 56px;
+}
+
+/* Columns ------------------------------------------------------------------- */
+.t5-footer__grid {
+	display: grid;
+	grid-template-columns: 1.35fr 1fr 1.2fr 1.2fr;
+	gap: 40px 48px;
+	margin-bottom: 48px;
+}
+
+.t5-footer__heading {
+	margin: 0 0 22px;
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 1;
+	text-transform: uppercase;
+	letter-spacing: var(--tracking-caps, 0.08em);
+	color: var(--text-inverse, #fff);
+}
+
+.t5-footer__logo {
+	display: inline-block;
+	margin-bottom: 28px;
+}
+
+.t5-footer__logo img {
+	display: block;
+	width: 96px;
+	height: 96px;
+}
+
+.t5-footer__blurb {
+	margin: 0;
+	max-width: 44ch;
+	font-size: 17px;
+	line-height: 1.65;
+}
+
+.t5-footer__links,
+.t5-footer__iconlist {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.t5-footer__links li {
+	margin: 0 0 14px;
+	font-size: 18px;
+	line-height: 1.3;
+}
+
+.t5-footer__iconlist li {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	margin: 0 0 16px;
+	font-size: 17px;
+	line-height: 1.45;
+}
+
+.t5-footer__icon {
+	flex: 0 0 auto;
+	margin-top: 2px;
+	color: var(--brand-accent, #8E231E);
+}
+
+/* Social buttons — the only filled red marks in the footer. */
+.t5-footer__socials {
+	display: flex;
+	gap: 14px;
+	margin-top: 26px;
+}
+
+.t5-footer__social {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	background: var(--brand-accent, #8E231E);
+	color: var(--text-inverse, #fff);
+	transition: background var(--duration-base, 200ms) ease, transform var(--duration-base, 200ms) ease;
+}
+
+.t5-footer__social:hover {
+	background: var(--brand-accent-hover, #A8302A);
+	color: var(--text-inverse, #fff);
+	transform: translateY(-2px);
+}
+
+/* Map band ------------------------------------------------------------------ */
+.t5-footer__map {
+	display: block;
+	position: relative;
+	overflow: hidden;
+	border-radius: var(--radius-lg, 10px);
+	background: var(--color-charcoal-800, #292622);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	min-height: 220px;
+}
+
+.t5-footer__map.has-image img {
+	display: block;
+	width: 100%;
+	height: auto;
+	max-height: 320px;
+	object-fit: cover;
+}
+
+.t5-footer__map.is-blueprint {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 14px;
+	min-height: 240px;
+	color: var(--color-stone-400, #A8A296);
+	background-image:
+		repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 32px),
+		repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 32px);
+}
+
+.t5-footer__map .t5-footer__icon {
+	margin: 0;
+	color: inherit; /* placeholder glyph stays neutral, not accent */
+}
+
+.t5-footer__map-label {
+	max-width: 36ch;
+	font-family: var(--font-mono);
+	font-size: 15px;
+	line-height: 1.4;
+	text-align: center;
+}
+
+/* Bottom bar ---------------------------------------------------------------- */
+.t5-footer__bar {
+	background: var(--color-charcoal-800, #292622);
+	border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.t5-footer__bar-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+	max-width: 1240px;
+	margin: 0 auto;
+	padding: 22px 32px;
+	font-family: var(--font-mono);
+	font-size: 14px;
+	color: var(--color-stone-400, #A8A296);
+}
+
+.t5-footer__legal-links {
+	display: flex;
+	gap: 24px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.t5-footer__legal {
+	margin: 0;
+}
+
+/* Responsive ---------------------------------------------------------------- */
+@media (max-width: 1024px) {
+	.t5-footer__grid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media (max-width: 640px) {
+	.t5-footer__inner {
+		padding: 56px 20px 40px;
+	}
+
+	.t5-footer__grid {
+		grid-template-columns: 1fr;
+		gap: 36px;
+	}
+
+	.t5-footer__bar-inner {
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 20px;
+	}
+}
