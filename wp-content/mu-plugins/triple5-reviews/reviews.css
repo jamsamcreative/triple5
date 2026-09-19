@@ -12,7 +12,7 @@
 }
 
 .t5-reviews__inner {
-	max-width: 1240px;
+	max-width: 1304px; /* 1240 content + gutters */
 	margin: 0 auto;
 	padding: 80px 32px 96px;
 }

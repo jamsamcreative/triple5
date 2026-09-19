@@ -23,7 +23,7 @@
 }
 
 .t5-footer__inner {
-	max-width: 1240px;
+	max-width: 1304px; /* 1240 content + gutters */
 	margin: 0 auto;
 	padding: 80px 32px 56px;
 }
@@ -174,7 +174,7 @@
 	align-items: center;
 	justify-content: space-between;
 	gap: 24px;
-	max-width: 1240px;
+	max-width: 1304px; /* 1240 content + gutters */
 	margin: 0 auto;
 	padding: 22px 32px;
 	font-family: var(--font-mono);

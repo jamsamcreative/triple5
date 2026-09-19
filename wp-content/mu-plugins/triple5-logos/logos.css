@@ -35,7 +35,7 @@
 .t5-logos__inner {
 	position: relative;
 	z-index: 1;
-	max-width: 1200px;
+	max-width: 1304px; /* 1240 content + gutters */
 	margin: 0 auto;
 	padding: 40px 32px;
 }

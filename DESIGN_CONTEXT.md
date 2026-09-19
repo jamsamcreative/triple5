@@ -37,7 +37,7 @@ _Seeded from: `tokens/typography.css` + `tokens/fonts.css` (Google Fonts substit
 - **Casing rule:** sentence case for body; **UPPERCASE with wide tracking** (`--tracking-caps` 0.08em) for display labels, buttons, eyebrows — the industrial-signage feel. **Exception (2026-09-15, owner's reference):** the main **nav bar** uses sentence-case Public Sans 600 links and sentence-case pill buttons — the header reads cleaner/more modern that way and the uppercase Barlow top bar above it still carries the signage feel. Section CTAs elsewhere stay uppercase.
 
 ### Spacing & Layout
-_Seeded from: `tokens/spacing.css`._ 4px base grid. 1200px max container, 720px narrow, 24px gutters. Generous 64–96px vertical section rhythm.
+_Seeded from: `tokens/spacing.css`._ 4px base grid. **Site content width is 1240px** — set by the Cornerstone header's `bar_content_max_length`, and every section wrapper matches it (`max-width: 1304px` = 1240 + 2×32px gutters, border-box) so the hero form card, section grids and footer columns all end flush with the header's "Get a Free Quote" button (owner request 2026-09-18; before this, sections ran at 1200/1240/1280 and the hero form stopped 30px short of the CTA). 720px narrow measure. Generous 64–96px vertical section rhythm.
 
 ### Elevation & Surfaces
 _Seeded from: `tokens/effects.css`._ Soft, low, **warm-tinted** shadows (`rgba(31,29,25,…)`, charcoal-tinted) — believable elevation, nothing glowing. 1px hairline stone borders on cards; 2px on buttons/focus. Featured cards get a 3px red top rule.

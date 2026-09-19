@@ -49,7 +49,7 @@
 .t5-hero__inner {
 	position: relative;
 	z-index: 1;
-	max-width: 1280px;
+	max-width: 1304px; /* 1240 content + 32px gutters = header width */
 	margin: 0 auto;
 	padding: 72px 32px;
 	display: grid;

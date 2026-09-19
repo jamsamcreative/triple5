@@ -8,7 +8,7 @@
 }
 
 .t5-services__inner {
-	max-width: 1200px;
+	max-width: 1304px; /* 1240 content + gutters */
 	margin: 0 auto;
 	padding: 80px 32px;
 }

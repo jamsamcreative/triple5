@@ -18,7 +18,7 @@
 	grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
 	gap: 24px;
 	align-items: stretch;
-	max-width: 1240px;
+	max-width: 1304px; /* 1240 content + gutters */
 	margin: 0 auto;
 	padding: 64px 32px;
 }
