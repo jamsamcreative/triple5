@@ -1,0 +1,416 @@
+/**
+ * Triple 5 Project Gallery styles. Built on the brand tokens loaded by
+ * triple5-brand (--brand-*, --color-*, --font-*, --radius-*, --shadow-*).
+ *
+ * White section: centered header → pill filters (red = active) → card grid
+ * (16:10 photo or blueprint placeholder, red category, uppercase title, pin +
+ * location) → lightbox (appended to <body> by gallery.js).
+ */
+
+.t5-gallery {
+	background: var(--surface-card, #fff);
+	color: var(--text-body, #423E37);
+}
+
+.t5-gallery__inner {
+	max-width: 1304px; /* 1240 content + gutters */
+	margin: 0 auto;
+	padding: 72px 32px 96px;
+}
+
+/* Header ------------------------------------------------------------------- */
+.t5-gallery__head {
+	text-align: center;
+	margin-bottom: 32px;
+}
+
+.t5-gallery__eyebrow {
+	margin: 0 0 14px;
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 14px;
+	text-transform: uppercase;
+	letter-spacing: var(--tracking-caps, 0.08em);
+	color: var(--brand-accent, #8E231E);
+}
+
+.t5-gallery__heading {
+	margin: 0 0 14px;
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: clamp(34px, 4vw, 56px);
+	line-height: 1;
+	text-transform: uppercase;
+	letter-spacing: 0.01em;
+	color: var(--text-strong, #1F1D19);
+}
+
+.t5-gallery__sub {
+	margin: 0;
+	font-family: var(--font-body);
+	font-size: 19px;
+	line-height: 1.5;
+	color: var(--text-body, #423E37);
+}
+
+/* Filters ------------------------------------------------------------------ */
+.t5-gallery__filters {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 10px;
+	margin-bottom: 40px;
+}
+
+.t5-gallery__filter {
+	appearance: none;
+	padding: 0 20px;
+	height: 42px;
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 1;
+	text-transform: uppercase;
+	letter-spacing: var(--tracking-caps, 0.08em);
+	color: var(--text-strong, #1F1D19);
+	background: var(--surface-card, #fff);
+	border: 1px solid var(--color-stone-300, #C9C4B9);
+	border-radius: var(--radius-pill, 999px);
+	cursor: pointer;
+	transition: background var(--duration-base, 200ms) ease, color var(--duration-base, 200ms) ease, border-color var(--duration-base, 200ms) ease;
+}
+
+.t5-gallery__filter:hover {
+	border-color: var(--brand-accent, #8E231E);
+	color: var(--brand-accent, #8E231E);
+}
+
+.t5-gallery__filter.is-active {
+	background: var(--brand-accent, #8E231E);
+	border-color: var(--brand-accent, #8E231E);
+	color: var(--text-inverse, #fff);
+}
+
+.t5-gallery__filter:focus-visible {
+	outline: none;
+	box-shadow: var(--shadow-focus, 0 0 0 3px rgba(168, 48, 42, 0.45));
+}
+
+/* Grid ---------------------------------------------------------------------- */
+.t5-gallery__grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 32px;
+}
+
+.t5-gallery__grid.has-cols-2 {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.t5-gallery__grid.has-cols-4 {
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.t5-gallery__card[hidden],
+.t5-gallery__none[hidden],
+.t5-lightbox[hidden],
+.t5-lightbox__nav[hidden] {
+	display: none; /* the theme ships no [hidden] rule */
+}
+
+.t5-gallery__none {
+	margin: 24px 0 0;
+	text-align: center;
+	color: var(--text-muted, #827C70);
+}
+
+/* Card --------------------------------------------------------------------- */
+.t5-gallery__card {
+	display: flex;
+	flex-direction: column;
+	background: var(--surface-card, #fff);
+	border: 1px solid var(--color-stone-200, #E1DDD5);
+	border-radius: var(--radius-lg, 10px);
+	overflow: hidden;
+	box-shadow: var(--shadow-sm);
+	transition: transform var(--duration-base, 200ms) var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), box-shadow var(--duration-base, 200ms) ease;
+}
+
+.t5-gallery__card:hover {
+	transform: translateY(-3px);
+	box-shadow: var(--shadow-md);
+}
+
+.t5-gallery__media {
+	position: relative;
+	display: block;
+	aspect-ratio: 16 / 10;
+	overflow: hidden;
+	background: var(--color-charcoal-800, #292622);
+}
+
+.t5-gallery__media img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform var(--duration-base, 200ms) var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.t5-gallery__card:hover .t5-gallery__media img {
+	transform: scale(1.03);
+}
+
+/* Blueprint placeholder tones — same motif as the services grid. */
+.t5-gallery__ph {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+	color: var(--color-stone-300, #C9C4B9);
+	background-image:
+		repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.07) 0 1px, transparent 1px 26px),
+		repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.07) 0 1px, transparent 1px 26px);
+}
+
+.t5-gallery__ph.is-tone-red {
+	background-color: #241611;
+	background-image:
+		repeating-linear-gradient(0deg, rgba(142, 35, 30, 0.22) 0 1px, transparent 1px 26px),
+		repeating-linear-gradient(90deg, rgba(142, 35, 30, 0.22) 0 1px, transparent 1px 26px);
+}
+
+.t5-gallery__ph.is-tone-coal {
+	background-color: var(--color-charcoal-900, #1F1D19);
+}
+
+.t5-gallery__ph-label {
+	font-family: var(--font-mono);
+	font-size: 15px;
+}
+
+/* Badges over the photo. */
+.t5-gallery__play {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 60px;
+	height: 60px;
+	margin: -30px 0 0 -30px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	background: var(--brand-accent, #8E231E);
+	color: var(--text-inverse, #fff);
+	box-shadow: var(--shadow-md);
+}
+
+.t5-gallery__count {
+	position: absolute;
+	right: 12px;
+	bottom: 12px;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 5px 10px;
+	font-family: var(--font-mono);
+	font-size: 12px;
+	color: var(--text-inverse, #fff);
+	background: rgba(31, 29, 25, 0.75);
+	border-radius: var(--radius-pill, 999px);
+}
+
+.t5-gallery__body {
+	padding: 22px 26px 26px;
+}
+
+.t5-gallery__cat {
+	display: block;
+	margin-bottom: 8px;
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 13px;
+	text-transform: uppercase;
+	letter-spacing: var(--tracking-caps, 0.08em);
+	color: var(--brand-accent, #8E231E);
+}
+
+.t5-gallery__title {
+	margin: 0 0 8px;
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 22px;
+	line-height: 1.15;
+	text-transform: uppercase;
+	color: var(--text-strong, #1F1D19);
+}
+
+.t5-gallery__loc {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-family: var(--font-body);
+	font-size: 16px;
+	color: var(--text-muted, #827C70);
+}
+
+/* Lightbox ----------------------------------------------------------------- */
+.t5-lightbox-open {
+	overflow: hidden;
+}
+
+.t5-lightbox {
+	position: fixed;
+	inset: 0;
+	z-index: 9999;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 24px;
+}
+
+.t5-lightbox__backdrop {
+	position: absolute;
+	inset: 0;
+	background: rgba(31, 29, 25, 0.92);
+}
+
+.t5-lightbox__panel {
+	position: relative;
+	width: min(1200px, 100%);
+	max-height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.t5-lightbox__stage {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	max-height: calc(100vh - 140px);
+}
+
+.t5-lightbox__stage img {
+	display: block;
+	max-width: 100%;
+	max-height: calc(100vh - 140px);
+	border-radius: var(--radius-md, 6px);
+	box-shadow: var(--shadow-lg);
+}
+
+.t5-lightbox__stage iframe,
+.t5-lightbox__stage video {
+	display: block;
+	width: min(1100px, 100%);
+	aspect-ratio: 16 / 9;
+	border: 0;
+	border-radius: var(--radius-md, 6px);
+	background: #000;
+}
+
+.t5-lightbox__bar {
+	display: flex;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 14px 4px 0;
+	font-family: var(--font-body);
+	font-size: 15px;
+	color: var(--color-stone-300, #C9C4B9);
+}
+
+.t5-lightbox__title {
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 17px;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: var(--text-inverse, #fff);
+}
+
+.t5-lightbox__counter {
+	font-family: var(--font-mono);
+}
+
+.t5-lightbox__close,
+.t5-lightbox__nav {
+	appearance: none;
+	position: absolute;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 48px;
+	height: 48px;
+	border: 0;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.12);
+	color: var(--text-inverse, #fff);
+	font-size: 30px;
+	line-height: 1;
+	cursor: pointer;
+	transition: background var(--duration-base, 200ms) ease;
+}
+
+.t5-lightbox__close:hover,
+.t5-lightbox__nav:hover {
+	background: var(--brand-accent, #8E231E);
+}
+
+.t5-lightbox__close {
+	top: -8px;
+	right: -8px;
+	z-index: 2;
+}
+
+.t5-lightbox__nav {
+	top: 50%;
+	margin-top: -44px;
+}
+
+.t5-lightbox__nav.is-prev {
+	left: -8px;
+}
+
+.t5-lightbox__nav.is-next {
+	right: -8px;
+}
+
+/* Responsive ---------------------------------------------------------------- */
+@media (max-width: 1024px) {
+	.t5-gallery__grid,
+	.t5-gallery__grid.has-cols-4 {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 600px) {
+	.t5-gallery__inner {
+		padding: 56px 20px 64px;
+	}
+
+	.t5-gallery__grid,
+	.t5-gallery__grid.has-cols-2,
+	.t5-gallery__grid.has-cols-4 {
+		grid-template-columns: 1fr;
+	}
+
+	.t5-lightbox {
+		padding: 12px;
+	}
+
+	.t5-lightbox__close {
+		top: 4px;
+		right: 4px;
+	}
+
+	.t5-lightbox__nav.is-prev {
+		left: 4px;
+	}
+
+	.t5-lightbox__nav.is-next {
+		right: 4px;
+	}
+}
