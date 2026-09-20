@@ -12,12 +12,12 @@ The custom-code repo for **triple5.local**, the WordPress marketing site for **T
 
 - **Local dev site:** `triple5.local` (WordPress 7.0.1 · PHP 8.2 · MySQL 8.4), managed by **Local** (Flywheel/WP Engine) at `~/Local Sites/triple5`.
 - **This repo** tracks **custom code only** (theme + brand mu-plugin). WordPress core and content live in the Local site and are intentionally NOT version-controlled here.
-- **Remote:** `github.com/jamsamcreative/triple5` — `main` tracks `origin/main`, pushed 2026-09-18.
+- **Remote:** `github.com/jamsamcreative/triple5` — `main` tracks `origin/main`, last pushed 2026-09-19.
 - **Connection model:** real files live here in the repo and are **symlinked into the Local site**, so edits here go live immediately on `triple5.local`. See README.md.
 
 ## Current State
 
-WordPress site being branded. Active theme is **Themeco Pro** (v6.8.11) with Cornerstone builder bundled. Brand tokens are wired in site-wide via a must-use plugin. Two commits: `02ca37e` (brand, theme, header) and `c9eff33` (2026-09-18: full element library, Quote Requests dashboard, charcoal/red recolor). Committed locally through the testimonials platform row (2026-09-19); `origin/main` is behind until the next push. Working tree clean.
+WordPress site being branded. Active theme is **Themeco Pro** (v6.8.11) with Cornerstone builder bundled. Brand tokens are wired in site-wide via a must-use plugin. Two commits: `02ca37e` (brand, theme, header) and `c9eff33` (2026-09-18: full element library, Quote Requests dashboard, charcoal/red recolor). All commits through the testimonials platform row pushed to `origin/main` (2026-09-19). Working tree clean.
 
 ### What's Working
 - **`wp-content/themes/triple5/`** — custom starter **block theme** (style.css, theme.json, functions.php, templates/index.html, parts/header+footer). Symlinked into the Local site.
