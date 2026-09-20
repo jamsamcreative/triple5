@@ -181,11 +181,11 @@
 
 .t5-feature__body2 {
 	margin: 0 0 26px;
-	font-family: var(--font-display);
-	font-weight: 700;
-	font-size: 19px;
-	line-height: 1.4;
-	color: var(--text-strong, #1F1D19);
+	font-family: var(--font-body);
+	font-weight: 400;
+	font-size: 17px;
+	line-height: 1.6;
+	color: var(--text-body, #423E37);
 }
 
 /* Button — solid red, uppercase display, small squared radius (brand button). */
