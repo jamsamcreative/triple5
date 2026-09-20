@@ -16,6 +16,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/** Platform slots: key => [shown by default, rating text, count text, review-page URL]. */
+function triple5_reviews_platform_defaults() {
+	return array(
+		'google'     => array( true, '5.0', '', '' ),
+		'yelp'       => array( false, '', '', '' ),
+		'facebook'   => array( false, '', '', '' ),
+		'trustpilot' => array( true, '4.9', '', '' ),
+	);
+}
+
 /** Manual slots and their sample defaults: [name, location, rating, text, source]. */
 function triple5_reviews_manual_defaults() {
 	return array(
@@ -43,7 +53,16 @@ $triple5_reviews_vals = array(
 	't5r_manual_first' => cs_value( false, 'markup', true ),
 	't5r_show_badge'   => cs_value( true, 'markup', true ),
 	't5r_link_cards'   => cs_value( true, 'markup', true ),
+	't5r_show_platforms' => cs_value( true, 'markup', true ),
+	't5r_platforms_label' => cs_value( 'Read our reviews on', 'markup', true ),
 );
+// Platform row: one slot per review site — rating text, review count text, link to the business's page there.
+foreach ( triple5_reviews_platform_defaults() as $key => $pf ) {
+	$triple5_reviews_vals[ "t5r_pf_{$key}_show" ]   = cs_value( $pf[0], 'markup', true );
+	$triple5_reviews_vals[ "t5r_pf_{$key}_rating" ] = cs_value( $pf[1], 'markup', true );
+	$triple5_reviews_vals[ "t5r_pf_{$key}_count" ]  = cs_value( $pf[2], 'markup', true );
+	$triple5_reviews_vals[ "t5r_pf_{$key}_url" ]    = cs_value( $pf[3], 'markup', true );
+}
 foreach ( triple5_reviews_manual_defaults() as $i => $m ) {
 	$triple5_reviews_vals[ "t5r_m{$i}_name" ]     = cs_value( $m[0], 'markup', true );
 	$triple5_reviews_vals[ "t5r_m{$i}_location" ] = cs_value( $m[1], 'markup', true );
@@ -94,6 +113,16 @@ function triple5_reviews_config_from_data( $data ) {
 		$sources[] = 'yelp';
 	}
 
+	$platforms = array();
+	foreach ( array_keys( triple5_reviews_platform_defaults() ) as $key ) {
+		$platforms[ $key ] = array(
+			'show'   => ! empty( $data[ "t5r_pf_{$key}_show" ] ),
+			'rating' => trim( (string) ( $data[ "t5r_pf_{$key}_rating" ] ?? '' ) ),
+			'count'  => trim( (string) ( $data[ "t5r_pf_{$key}_count" ] ?? '' ) ),
+			'url'    => trim( (string) ( $data[ "t5r_pf_{$key}_url" ] ?? '' ) ),
+		);
+	}
+
 	return array(
 		'heading'      => trim( (string) $data['t5r_heading'] ),
 		'min_rating'   => (int) $data['t5r_min_rating'],
@@ -104,6 +133,9 @@ function triple5_reviews_config_from_data( $data ) {
 		'manual_first' => ! empty( $data['t5r_manual_first'] ),
 		'show_badge'   => ! empty( $data['t5r_show_badge'] ),
 		'link_cards'   => ! empty( $data['t5r_link_cards'] ),
+		'show_platforms'  => ! empty( $data['t5r_show_platforms'] ),
+		'platforms_label' => trim( (string) $data['t5r_platforms_label'] ),
+		'platforms'       => $platforms,
 	);
 }
 
@@ -178,8 +210,30 @@ function triple5_reviews_builder_setup() {
 				array( 'key' => 't5r_use_yelp', 'type' => 'toggle', 'label' => 'Include Yelp reviews (needs Settings → Triple 5 Reviews)' ),
 				array( 'key' => 't5r_use_manual', 'type' => 'toggle', 'label' => 'Include the manual reviews below' ),
 				array( 'key' => 't5r_manual_first', 'type' => 'toggle', 'label' => 'Show manual reviews before fetched ones' ),
-				array( 'key' => 't5r_show_badge', 'type' => 'toggle', 'label' => 'Show source badge (G / Yelp) on cards' ),
-				array( 'key' => 't5r_link_cards', 'type' => 'toggle', 'label' => 'Link cards to the original review when a URL exists' ),
+				array( 'key' => 't5r_show_badge', 'type' => 'toggle', 'label' => 'Show platform badge (name + logo) on each card' ),
+				array( 'key' => 't5r_link_cards', 'type' => 'toggle', 'label' => 'Badge links out (to the review itself, or the platform page below)' ),
+			),
+		),
+		array(
+			'type'     => 'group',
+			'group'    => 't5-reviews:platforms',
+			'controls' => array_merge(
+				array(
+					array( 'key' => 't5r_show_platforms', 'type' => 'toggle', 'label' => 'Show platform row under the heading' ),
+					array( 'key' => 't5r_platforms_label', 'type' => 'text', 'label' => 'Row label (e.g. "Read our reviews on")' ),
+				),
+				call_user_func( static function () {
+					$out    = array();
+					$labels = triple5_reviews_source_labels();
+					foreach ( array_keys( triple5_reviews_platform_defaults() ) as $key ) {
+						$name  = $labels[ $key ];
+						$out[] = array( 'key' => "t5r_pf_{$key}_show", 'type' => 'toggle', 'label' => "— {$name}: show" );
+						$out[] = array( 'key' => "t5r_pf_{$key}_rating", 'type' => 'text', 'label' => "{$name} rating (e.g. 4.9)" );
+						$out[] = array( 'key' => "t5r_pf_{$key}_count", 'type' => 'text', 'label' => "{$name} review count text (e.g. 38 reviews)" );
+						$out[] = array( 'key' => "t5r_pf_{$key}_url", 'type' => 'text', 'label' => "{$name} review page URL" );
+					}
+					return $out;
+				} )
 			),
 		),
 	);
@@ -188,6 +242,7 @@ function triple5_reviews_builder_setup() {
 		't5-reviews'         => 'Testimonials',
 		't5-reviews:setup'   => 'Setup & filter',
 		't5-reviews:sources' => 'Sources',
+		't5-reviews:platforms' => 'Review platforms',
 	);
 
 	foreach ( array_keys( triple5_reviews_manual_defaults() ) as $i ) {

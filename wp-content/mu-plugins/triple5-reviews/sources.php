@@ -59,9 +59,11 @@ function triple5_reviews_update_settings( array $patch ) {
 /** Source labels shared by the builder, the admin page and the card badge. */
 function triple5_reviews_source_labels() {
 	return array(
-		'google' => 'Google',
-		'yelp'   => 'Yelp',
-		'manual' => 'Manual',
+		'google'     => 'Google',
+		'yelp'       => 'Yelp',
+		'facebook'   => 'Facebook',
+		'trustpilot' => 'Trustpilot',
+		'manual'     => 'Manual',
 	);
 }
 

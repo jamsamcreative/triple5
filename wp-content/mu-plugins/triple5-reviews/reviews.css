@@ -120,25 +120,112 @@
 	color: var(--text-muted, #827C70);
 }
 
-/* Source badge — small outlined disc at the right of the header. */
+/* Platform badge — outlined pill with the platform's own mark + name so the
+   source is legible, not just a glyph. Links out when it can. */
 .t5-reviews__badge {
 	flex: 0 0 auto;
 	display: inline-flex;
 	align-items: center;
-	justify-content: center;
-	width: 36px;
-	height: 36px;
+	gap: 6px;
+	height: 30px;
+	padding: 0 10px 0 8px;
 	border: 1px solid var(--color-stone-200, #E1DDD5);
-	border-radius: 50%;
+	border-radius: var(--radius-pill, 999px);
 	background: var(--surface-card, #fff);
+	font-family: var(--font-body);
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0.02em;
 	color: var(--text-muted, #827C70);
+	text-decoration: none;
+	transition: border-color var(--duration-base, 200ms) ease, color var(--duration-base, 200ms) ease;
+}
+
+.t5-reviews__badge.is-link:hover {
+	border-color: var(--brand-accent, #8E231E);
+	color: var(--brand-accent, #8E231E);
+}
+
+/* Platform row — under the heading: "Read our reviews on  [G Google 5.0★ ↗] …" */
+.t5-reviews__platforms {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+	margin: -28px 0 44px;
+}
+
+.t5-reviews__pf-label {
+	margin-right: 4px;
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 14px;
+	text-transform: uppercase;
+	letter-spacing: var(--tracking-caps, 0.08em);
+	color: var(--text-muted, #827C70);
+}
+
+.t5-reviews__pf {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	height: 40px;
+	padding: 0 14px;
+	border: 1px solid var(--color-stone-200, #E1DDD5);
+	border-radius: var(--radius-pill, 999px);
+	background: var(--surface-card, #fff);
+	font-family: var(--font-body);
+	font-size: 15px;
+	color: var(--text-strong, #1F1D19);
+	text-decoration: none;
+	transition: border-color var(--duration-base, 200ms) ease, box-shadow var(--duration-base, 200ms) ease;
+}
+
+.t5-reviews__pf.is-link:hover {
+	border-color: var(--brand-accent, #8E231E);
+	box-shadow: var(--shadow-sm);
+	color: var(--text-strong, #1F1D19);
+}
+
+.t5-reviews__pf-name {
+	font-weight: 600;
+}
+
+.t5-reviews__pf-rating {
+	display: inline-flex;
+	align-items: center;
+	gap: 3px;
+	font-weight: 700;
+	color: var(--text-strong, #1F1D19);
+}
+
+.t5-reviews__pf-rating svg {
+	color: var(--color-warning, #C98A16);
+}
+
+.t5-reviews__pf-count {
+	color: var(--text-muted, #827C70);
+}
+
+.t5-reviews__pf-arrow {
+	margin-left: 2px;
+	color: var(--brand-accent, #8E231E);
+}
+
+/* Meta row: stars left, platform badge right — keeps the name row uncramped. */
+.t5-reviews__meta {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	margin-bottom: 18px;
 }
 
 /* Stars — amber (status-warning token) as on the hero badges. */
 .t5-reviews__stars {
 	display: inline-flex;
 	gap: 2px;
-	margin-bottom: 18px;
 	color: var(--color-stone-200, #E1DDD5);
 }
 
@@ -173,6 +260,10 @@
 
 	.t5-reviews__heading {
 		margin-bottom: 36px;
+	}
+
+	.t5-reviews__platforms {
+		margin: -16px 0 32px;
 	}
 
 	.t5-reviews__grid,
