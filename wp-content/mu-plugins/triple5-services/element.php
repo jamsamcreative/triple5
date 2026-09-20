@@ -23,6 +23,8 @@ function triple5_services_card_defaults() {
 		4 => array( 'Storm & Insurance Work', 'Wind, hail and snow-load damage assessments and insurance-ready repair estimates.', 'navy' ),
 		5 => array( 'Concrete & Framing', 'Driveways, patios, foundations, flatwork and framing for new builds and additions.', 'clay' ),
 		6 => array( 'Commercial & Ag', 'Durable, low-maintenance metal exteriors for shops, barns and light commercial.', 'navy' ),
+		7 => array( '', '', 'clay' ),  // spare slots (blank = hidden) — lets the grid serve 7–8 items, e.g. the Locations index
+		8 => array( '', '', 'coal' ),
 	);
 }
 
