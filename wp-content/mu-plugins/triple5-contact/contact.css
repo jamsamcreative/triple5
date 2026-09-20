@@ -1,0 +1,215 @@
+/**
+ * Triple 5 Contact styles. Built on the brand tokens loaded by triple5-brand
+ * (--brand-*, --color-*, --font-*, --radius-*, --shadow-*). The form itself is
+ * styled by triple5-hero/hero.css (.t5-hero__formwrap etc.), which loads on
+ * every page; this file only lays out the page and the details column.
+ */
+
+.t5-contact {
+	background: var(--surface-card, #fff);
+	color: var(--text-body, #423E37);
+}
+
+/* Header band — same treatment as the Service Tabs / location pages. */
+.t5-contact__header {
+	background: var(--surface-page, #F8F7F4);
+	border-bottom: 1px solid var(--color-stone-200, #E1DDD5);
+}
+
+.t5-contact__header-inner {
+	max-width: 1304px; /* 1240 content + gutters */
+	margin: 0 auto;
+	padding: 64px 32px 72px;
+}
+
+.t5-contact__eyebrow {
+	margin: 0 0 22px;
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 15px;
+	text-transform: uppercase;
+	letter-spacing: var(--tracking-caps, 0.08em);
+	color: var(--brand-accent, #8E231E);
+}
+
+.t5-contact__title {
+	margin: 0 0 20px;
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: clamp(38px, 4.8vw, 66px);
+	line-height: 0.98;
+	text-transform: uppercase;
+	letter-spacing: 0.01em;
+	color: var(--text-strong, #1F1D19);
+}
+
+.t5-contact__sub {
+	margin: 0;
+	max-width: 760px;
+	font-family: var(--font-body);
+	font-size: 20px;
+	line-height: 1.45;
+}
+
+/* Body: details | form ------------------------------------------------------ */
+.t5-contact__inner {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+	gap: 48px 64px;
+	align-items: start;
+	max-width: 1304px;
+	margin: 0 auto;
+	padding: 64px 32px 96px;
+}
+
+.t5-contact__h2 {
+	margin: 0 0 20px;
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 22px;
+	line-height: 1.1;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: var(--text-strong, #1F1D19);
+}
+
+.t5-contact__rows {
+	margin: 0 0 40px;
+	padding: 0;
+	list-style: none;
+}
+
+.t5-contact__rows li {
+	display: flex;
+	align-items: flex-start;
+	gap: 14px;
+	margin: 0 0 16px;
+	font-family: var(--font-body);
+	font-size: 18px;
+	line-height: 1.45;
+}
+
+.t5-contact__rows a {
+	color: var(--text-strong, #1F1D19);
+	text-decoration: none;
+	font-weight: 600;
+	transition: color var(--duration-base, 200ms) ease;
+}
+
+.t5-contact__rows a:hover {
+	color: var(--brand-accent, #8E231E);
+}
+
+.t5-contact__icon {
+	flex: 0 0 auto;
+	margin-top: 3px;
+	color: var(--brand-accent, #8E231E);
+}
+
+/* Numbered steps — red counters in the display face. */
+.t5-contact__steps {
+	margin: 0 0 40px;
+	padding: 0;
+	list-style: none;
+	counter-reset: t5step;
+}
+
+.t5-contact__steps li {
+	position: relative;
+	padding-left: 48px;
+	margin: 0 0 14px;
+	font-family: var(--font-body);
+	font-size: 17px;
+	line-height: 1.5;
+	counter-increment: t5step;
+}
+
+.t5-contact__steps li::before {
+	content: counter(t5step);
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 32px;
+	height: 32px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	background: var(--brand-accent, #8E231E);
+	color: var(--text-inverse, #fff);
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 15px;
+}
+
+/* Map / photo slot. */
+.t5-contact__map {
+	display: block;
+	position: relative;
+	overflow: hidden;
+	border-radius: var(--radius-lg, 10px);
+	background: var(--color-charcoal-800, #292622);
+	aspect-ratio: 16 / 9;
+}
+
+.t5-contact__map.has-image img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.t5-contact__map.is-blueprint {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+	color: var(--color-stone-300, #C9C4B9);
+	background-image:
+		repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.07) 0 1px, transparent 1px 28px),
+		repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.07) 0 1px, transparent 1px 28px);
+}
+
+.t5-contact__map .t5-contact__icon {
+	margin: 0;
+	color: inherit;
+}
+
+.t5-contact__map-label {
+	font-family: var(--font-mono);
+	font-size: 14px;
+}
+
+/* Form column — the hero's dark card sits on this white page; give it a sticky
+   offset so it stays in view while the details column scrolls on tall pages. */
+.t5-contact__formcol {
+	position: sticky;
+	top: 24px;
+}
+
+/* On the white page the hero's translucent card would read grey — go solid. */
+.t5-contact .t5-hero__formwrap {
+	background: var(--color-charcoal-800, #292622);
+	-webkit-backdrop-filter: none;
+	backdrop-filter: none;
+	border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Responsive ---------------------------------------------------------------- */
+@media (max-width: 960px) {
+	.t5-contact__inner {
+		grid-template-columns: 1fr;
+		gap: 40px;
+		padding: 48px 20px 72px;
+	}
+
+	.t5-contact__formcol {
+		position: static;
+		order: -1;
+	}
+
+	.t5-contact__header-inner {
+		padding: 48px 20px 56px;
+	}
+}
